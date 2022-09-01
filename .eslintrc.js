@@ -1,0 +1,47 @@
+module.exports = {
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: 'tsconfig.json',
+    sourceType: 'module',
+  },
+  plugins: ['@typescript-eslint/eslint-plugin'],
+  extends: ['plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
+  root: true,
+  env: {
+    node: true,
+    browser: true,
+    commonjs: true,
+    jest: true,
+    es6: true,
+    'shared-node-browser': true,
+  },
+  ignorePatterns: ['.eslintrc.js'],
+  rules: {
+    'no-multi-spaces': 'off',
+    '@typescript-eslint/no-namespace': 'warn',
+    '@typescript-eslint/camelcase': 'warn',
+    '@typescript-eslint/ban-ts-ignore': 'warn',
+    '@typescript-eslint/interface-name-prefix': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/ban-types': [
+      'error',
+      {
+        types: {
+          String: false,
+          Boolean: false,
+          Number: false,
+          Symbol: false,
+          '{}': false,
+          Object: false,
+          object: false,
+          Function: false,
+        },
+        extendDefaults: true,
+      },
+    ],
+  },
+};
