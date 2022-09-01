@@ -1,8 +1,11 @@
 import AWS from 'aws-sdk';
-import { StorageObject, UploaderConfig } from '@/src';
+import { StorageObject, UploaderConfig } from '../index';
 import { Provider } from './index';
 
-export class S3Client extends Provider.AbstractClient implements Provider.IClient {
+export class S3Client
+  extends Provider.AbstractClient
+  implements Provider.IClient
+{
   client: AWS.S3;
 
   constructor(cfg: UploaderConfig) {

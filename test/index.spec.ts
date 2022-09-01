@@ -1,4 +1,4 @@
-import { OSSProvider, Uploader, UploadResult } from './index';
+import { OSSProvider, Uploader, UploadResult } from '../src';
 import fs from 'fs';
 
 describe('TencentCloudCOS', () => {
@@ -18,7 +18,10 @@ describe('TencentCloudCOS', () => {
     });
   });
   it('upload prefix should be correct', async () => {
-    let res: UploadResult = await uploader.upload({ body: fs.readFileSync('tsconfig.json'), mime: 'application/json' });
+    let res: UploadResult = await uploader.upload({
+      body: fs.readFileSync('tsconfig.json'),
+      mime: 'application/json',
+    });
     expect(res.uri).toMatch(/^abb\//);
   });
   it('upload uri should be correct', async () => {
@@ -46,7 +49,10 @@ describe('S3', () => {
     });
   });
   it('upload prefix should be correct', async () => {
-    let res: UploadResult = await uploader.upload({ body: fs.readFileSync('tsconfig.json'), mime: 'application/json' });
+    let res: UploadResult = await uploader.upload({
+      body: fs.readFileSync('tsconfig.json'),
+      mime: 'application/json',
+    });
     expect(res.uri).toMatch(/^afaf\//);
   });
   it('upload uri should be correct', async () => {

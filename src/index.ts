@@ -46,9 +46,12 @@ export class Uploader {
     }
   }
 
-  async upload(obj: StorageObject, name: string = generateRandomName()): Promise<UploadResult> {
+  async upload(
+    obj: StorageObject,
+    name: string = generateRandomName()
+  ): Promise<UploadResult> {
     const ext = getExtension(obj.mime) ?? '';
-    let prefix = this.config.prefix?.trim() || '';
+    let prefix = (this.config.prefix ?? '').trim();
     // remove start char '/', key should not start with '/'
     if (/^\/.*/.test(prefix)) {
       prefix = prefix.replace('/', '');
@@ -57,13 +60,22 @@ export class Uploader {
     if (!/.+\/$/.test(prefix)) {
       prefix = prefix.concat('/');
     }
-    const key = `${name.startsWith('/') ? name.replace('/', '') : name}.${ext.toLowerCase()}`;
+    const key = `${
+      name.startsWith('/') ? name.replace('/', '') : name
+    }.${ext.toLowerCase()}`;
     const uri = prefix.concat(key);
     const params = {
       obj,
       key: uri,
     };
-    console.debug(`[OSS-Uploader] before upload`, { mime: obj.mime, name, key, ext, prefix, uri });
+    console.debug(`[OSS-Uploader] before upload`, {
+      mime: obj.mime,
+      name,
+      key,
+      ext,
+      prefix,
+      uri,
+    });
     switch (this.config.provider) {
       case OSSProvider.S3:
         await this.s3Client!.putObject(params);
