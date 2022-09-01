@@ -11,7 +11,7 @@ npm i @lrvinye/oss-uploader
 ```ts
 import { OSSProvider, Uploader, UploadResult } from '@lrvinye/oss-uploader';
 const uploader = new Uploader({
-  provider: OSSProvider.S3,
+  provider: OSSProvider.S3, // can be S3|COS
   endpoint: 's3.${region}.amazonaws.com',
   bucket: 'bucketName',
   credential: {
@@ -20,10 +20,11 @@ const uploader = new Uploader({
   },
   prefix: '/images',
 });
-const res: UploadResult = await uploader.upload(
-    { body: fs.readFileSync('foo.jpg'), mime: 'image/jpeg' }
-);
-console.log(res); // { uri: "images//VkbqGp6iKG3UbGgU.jpeg" }
+uploader
+  .upload({body: fs.readFileSync("foo.jpg"), mime: "image/jpeg"})
+  .then((res: UploadResult) => {
+    console.log(res); // { uri: "images/VkbqGp6iKG3UbGgU.jpeg" }
+  });
 ```
 
 ### Test
