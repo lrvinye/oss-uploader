@@ -1,7 +1,7 @@
 {
   "name": "@lrvinye/oss-uploader",
   "version": "0.0.3",
-  "description": "Node.js client for object storage services like S3 or TencentCloud COS",
+  "description": "Node.js client for object storage services like S3, R2 or TencentCloud COS",
   "license": "MIT",
   "keywords": [
     "uploader",
@@ -12,9 +12,9 @@
   "repository": "https://github.com/lrvinye/oss-uploader-js",
   "homepage": "https://github.com/lrvinye/oss-uploader-js",
   "author": {
-    "email": "me@lrvinye.cn",
+    "email": "me@lrvinye.me",
     "name": "lrvinye",
-    "url": "https://lrvinye.cn"
+    "url": "https://www.lrvinye.me"
   },
   "files": [
     "dist"
